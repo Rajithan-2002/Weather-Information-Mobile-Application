@@ -18,6 +18,16 @@ interface WeatherApiService {
         @Query("appid") apiKey: String,
         @Query("units") units: String = "metric"
     ): WeatherResponse
+
+    /**
+     * Fetches current weather for a specific ZIP code.
+     */
+    @GET("data/2.5/weather")
+    suspend fun getCurrentWeatherByZip(
+        @Query("zip") zipCode: String,
+        @Query("appid") apiKey: String,
+        @Query("units") units: String = "metric"
+    ): WeatherResponse
 }
 
 /**

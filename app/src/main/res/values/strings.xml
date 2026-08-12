@@ -1,8 +1,8 @@
 <resources>
     <string name="app_name">Weather App</string>
-    <string name="search_hint">Enter city name</string>
+    <string name="search_hint">Enter city name or zip code</string>
     <string name="search_button">Search Weather</string>
-    <string name="initial_message">Search a city to see the weather</string>
+    <string name="initial_message">Search a city or zip code to see the weather</string>
     <string name="loading_message">Fetching weather&#8230;</string>
     <string name="city_name_placeholder">Colombo</string>
     <string name="temperature_placeholder">29°C</string>
@@ -11,5 +11,5 @@
     <string name="wind_speed_label">Wind Speed: %s</string>
     <string name="error_city_not_found">City not found</string>
     <string name="error_no_internet">No internet connection</string>
-    <string name="input_error">Please enter a valid city name</string>
+    <string name="input_error">Please enter a valid city name or zip code</string>
 </resources>

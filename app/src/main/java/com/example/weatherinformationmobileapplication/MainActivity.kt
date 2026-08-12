@@ -39,8 +39,8 @@ class MainActivity : AppCompatActivity() {
             val cityName = binding.etCitySearch.text.toString().trim()
 
             if (cityName.isEmpty()) {
-                binding.etCitySearch.error = "Please enter a city name"
-                Toast.makeText(this, "City name cannot be empty", Toast.LENGTH_SHORT).show()
+                binding.etCitySearch.error = "Please enter a location"
+                Toast.makeText(this, "Search query cannot be empty", Toast.LENGTH_SHORT).show()
                 binding.etCitySearch.requestFocus()
             } else {
                 binding.etCitySearch.error = null
