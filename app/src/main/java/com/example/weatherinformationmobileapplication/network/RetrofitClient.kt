@@ -7,12 +7,11 @@ import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 
 /**
- * Singleton Retrofit client for real API calls.
+ * Singleton Retrofit client for the OpenWeatherMap API.
  */
 object RetrofitClient {
 
-    // TODO: Replace with real API base URL once chosen
-    private const val BASE_URL = "https://example.com/"
+    private const val BASE_URL = "https://api.openweathermap.org/"
 
     private val okHttpClient: OkHttpClient by lazy {
         val loggingInterceptor = HttpLoggingInterceptor().apply {

@@ -5,15 +5,14 @@ import retrofit2.http.GET
 import retrofit2.http.Query
 
 /**
- * Weather API Service interface, designed to be swappable.
+ * Weather API Service interface for OpenWeatherMap.
  */
 interface WeatherApiService {
 
     /**
      * Fetches current weather for a specific city.
-     * @GET("TODO_ENDPOINT_PATH") - placeholder for real endpoint
      */
-    @GET("TODO_ENDPOINT_PATH")
+    @GET("data/2.5/weather")
     suspend fun getCurrentWeather(
         @Query("q") city: String,
         @Query("appid") apiKey: String,

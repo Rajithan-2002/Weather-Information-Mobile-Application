@@ -3,8 +3,7 @@ package com.example.weatherinformationmobileapplication.model
 import com.google.gson.annotations.SerializedName
 
 /**
- * Data class representing a parsed weather API JSON response.
- * // TODO: Confirm these field names match the chosen API's actual JSON response before final integration.
+ * Data class representing the OpenWeatherMap API JSON response.
  */
 data class WeatherResponse(
     @SerializedName("name")
