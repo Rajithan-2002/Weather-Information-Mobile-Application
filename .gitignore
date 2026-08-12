@@ -1,15 +1,42 @@
+# ============================================
+# Android / Gradle Build Outputs
+# ============================================
 *.iml
-.gradle
-/local.properties
-/.idea/caches
-/.idea/libraries
-/.idea/modules.xml
-/.idea/workspace.xml
-/.idea/navEditor.xml
-/.idea/assetWizardSettings.xml
-.DS_Store
-/build
-/captures
-.externalNativeBuild
-.cxx
+.gradle/
+/build/
+/captures/
+.externalNativeBuild/
+.cxx/
+
+# ============================================
+# IDE - Android Studio / IntelliJ (.idea)
+# ============================================
+# MANDATORY: These are user-specific and cause merge conflicts between team members
+.idea/
+*.iws
+
+# ============================================
+# Local Configuration (MANDATORY - contains secrets)
+# ============================================
 local.properties
+
+# ============================================
+# Signing / Keystore (MANDATORY - security sensitive)
+# ============================================
+*.jks
+*.keystore
+signing.properties
+
+# ============================================
+# OS-Generated Files
+# ============================================
+.DS_Store
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# ============================================
+# Kotlin / Gradle Caches
+# ============================================
+.kotlin/
+*.hprof
