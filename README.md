@@ -192,9 +192,9 @@ Weather-Information-Mobile-Application/
 
 | Name | Role |
 |------|------|
-| **Rajithan** | Project setup, UI design & layout states |
-| **Habikugasarma.K** | API integration, networking & backend logic |
-| **Pasindu Dulsara** | API integration & documentation |
+| **Rajithan** | Project setup, networking & backend logic |
+| **Habikugasarma.K** | API integration & documentation |
+| **Pasindu Dulsara** | UI design & layout states  |
 
 ---
 
