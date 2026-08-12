@@ -5,7 +5,6 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.weatherinformationmobileapplication.network.FakeWeatherApiService
 import com.example.weatherinformationmobileapplication.network.InvalidCityException
 import com.example.weatherinformationmobileapplication.network.RetrofitClient
 import com.example.weatherinformationmobileapplication.network.WeatherApiService
@@ -24,11 +23,9 @@ class WeatherViewModel : ViewModel() {
     val uiState: LiveData<WeatherUiState> = _uiState
 
     /**
-     * Currently configured API service.
-     * Defaults to FakeWeatherApiService for development without a key.
-     * TODO: Swap to RetrofitClient.weatherApiService once the real API is ready.
+     * Using the real Retrofit-powered API service.
      */
-    private val weatherApiService: WeatherApiService = FakeWeatherApiService()
+    private val weatherApiService: WeatherApiService = RetrofitClient.weatherApiService
 
     /**
      * Fetches weather for the given city and updates the UI state.
@@ -44,11 +41,10 @@ class WeatherViewModel : ViewModel() {
 
         viewModelScope.launch {
             try {
-                Log.d("WeatherApp", "Starting API call...")
-                // TODO: Replace "PLACEHOLDER_API_KEY" with a real key later
+                Log.d("WeatherApp", "Starting real API call...")
                 val response = weatherApiService.getCurrentWeather(
                     city = city,
-                    apiKey = "PLACEHOLDER_API_KEY"
+                    apiKey = BuildConfig.WEATHER_API_KEY
                 )
                 Log.d("WeatherApp", "API call successful: ${response.cityName}")
                 _uiState.postValue(WeatherUiState.Success(response))
