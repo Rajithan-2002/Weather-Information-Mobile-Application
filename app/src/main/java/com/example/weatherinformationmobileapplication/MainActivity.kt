@@ -1,20 +1,36 @@
 package com.example.weatherinformationmobileapplication
 
 import android.os.Bundle
-import androidx.activity.enableEdgeToEdge
+import android.util.Log
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
+import com.example.weatherinformationmobileapplication.state.WeatherUiState
 
 class MainActivity : AppCompatActivity() {
+
+    private val viewModel: WeatherViewModel by viewModels()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
+        Log.e("WeatherApp", "MainActivity onCreate started!")
         setContentView(R.layout.activity_main)
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
+
+        viewModel.uiState.observe(this) { state ->
+            Log.e("WeatherApp", "UI State Changed: $state")
+            when (state) {
+                is WeatherUiState.Loading -> {
+                    Log.d("WeatherApp", "-> LOADING...")
+                }
+                is WeatherUiState.Success -> {
+                    Log.d("WeatherApp", "-> SUCCESS: ${state.data.cityName}")
+                }
+                is WeatherUiState.Error -> {
+                    Log.d("WeatherApp", "-> ERROR: ${state.message}")
+                }
+            }
         }
+
+        Log.d("WeatherApp", "Triggering initial fetch for London...")
+        viewModel.fetchWeather("London")
     }
 }
