@@ -2,6 +2,13 @@ plugins {
     id 'com.android.application'
 }
 
+// Load local.properties to access the API key securely
+def localProperties = new Properties()
+def localPropertiesFile = rootProject.file('local.properties')
+if (localPropertiesFile.exists()) {
+    localProperties.load(new FileInputStream(localPropertiesFile))
+}
+
 android {
     namespace 'com.example.weatherinformationmobileapplication'
     compileSdk 37
@@ -13,7 +20,8 @@ android {
         versionCode 1
         versionName "1.0"
 
-        buildConfigField "String", "WEATHER_API_KEY", "\"18e67444c52c1bee9380b03e31fac5dd\""
+        // Use the key from local.properties
+        buildConfigField "String", "WEATHER_API_KEY", "\"${localProperties.getProperty('WEATHER_API_KEY', '')}\""
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
